@@ -9,7 +9,15 @@ table 69750 "PTE Telemetry Event"
         {
             DataClassification = SystemMetadata;
         }
+        field(2; Description; Text[30])
+        {
+            DataClassification = SystemMetadata;
+        }
         field(8; Disabled; Boolean) { DataClassification = SystemMetadata; }
+        field(13; "Default Verbosity"; Option)
+        {
+            OptionMembers = Verbose,Normal,Warning,Error,Critical;
+        }
     }
 
     keys
@@ -17,6 +25,35 @@ table 69750 "PTE Telemetry Event"
         key(PK; "Event ID") { Clustered = true; }
     }
 
+    procedure LogMsg(Msg: Text);
+    begin
+        case "Default Verbosity" of
+            "Default Verbosity"::Verbose:
+                LogMessage("Event ID", Msg, Verbosity::Verbose, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+                    'EventDescription', Description);
+            "Default Verbosity"::Normal:
+                LogMessage("Event ID", Msg, Verbosity::Normal, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+                    'EventDescription', Description);
+            "Default Verbosity"::Warning:
+                LogMessage("Event ID", Msg, Verbosity::Warning, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+                    'EventDescription', Description);
+            "Default Verbosity"::Error:
+                LogMessage("Event ID", Msg, Verbosity::Error, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+                    'EventDescription', Description);
+            "Default Verbosity"::Critical:
+                LogMessage("Event ID", Msg, Verbosity::Critical, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+                    'EventDescription', Description);
+        end
 
+    end;
+
+    procedure LogMsg(Msg: Text; Verb: Verbosity);
+    begin
+        if Disabled then
+            exit;
+        TestField("Event ID");
+        LogMessage("Event ID", Msg, Verb, DataClassification::SystemMetadata, TelemetryScope::ExtensionPublisher,
+            'EventDescription', Description);
+    end;
 
 }

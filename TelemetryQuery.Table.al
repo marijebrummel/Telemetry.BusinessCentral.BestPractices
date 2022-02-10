@@ -13,8 +13,11 @@ table 69751 "PTE Telemetry Query"
     }
 
     procedure RunQuery();
+    var
+        Setup: Record "PTE Telemetry Setup";
     begin
-        Hyperlink('foo.com');
+        Setup.Get();
+        Hyperlink(Setup.GetURL(''));
     end;
 
 }
