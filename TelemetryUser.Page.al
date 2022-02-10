@@ -1,4 +1,4 @@
-page 69752 "PTE Telemetry User"
+page 69752 "PTE Telemetry Users"
 {
     PageType = List;
     ApplicationArea = All;

@@ -20,10 +20,21 @@ table 69750 "PTE Telemetry Event"
         }
     }
 
-    keys
-    {
-        key(PK; "Event ID") { Clustered = true; }
-    }
+    keys { key(PK; "Event ID") { Clustered = true; } }
+
+    procedure GetQuery(): Text
+    begin
+        exit('Traces | ago(1hour) where customDimensions.eventId = ' + "Event ID");
+    end;
+
+    procedure RunDefaultQuery();
+    var
+        Setup: Record "PTE Telemetry Setup";
+    begin
+        Setup.Get();
+        Hyperlink(Setup.GetURL(GetQuery()));
+    end;
+
 
     procedure LogMsg(Msg: Text);
     begin
