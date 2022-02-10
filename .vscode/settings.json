@@ -1,0 +1,7 @@
+{
+    "al.ruleSetPath": "_PTE.ruleset.json",
+	"al.codeAnalyzers": [
+		"${PerTenantExtensionCop}"
+	],
+	"al.enableCodeAnalysis": true
+}

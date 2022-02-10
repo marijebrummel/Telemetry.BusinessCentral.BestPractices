@@ -1,0 +1,26 @@
+{
+  "id": "d41208e7-6d63-4b91-a888-ae892398d6a2",
+  "name": "Telemetry - Best Practices",
+  "publisher": "Marije Brummel",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [   ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "19.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "resourceExposurePolicy": {"allowDebugging": true, "allowDownloadingSource": true, "includeSourceInSymbolFile": true},
+  "runtime": "8.0",
+  "preprocessorSymbols": ["PerTenantExtension"]
+}
