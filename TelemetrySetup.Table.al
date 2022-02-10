@@ -41,14 +41,16 @@ table 69740 "PTE Telemetry Setup"
 
     procedure GetDefaultEvents()
     var
-        // TelemetryEvent: Enum "PTE Telemetry Event";
         TelemetryEvent: Interface "PTE Telemetry Event";
         TelEvent: Record "PTE Telemetry Event";
+        x: Integer;
     begin
-        TelemetryEvent := "PTE Telemetry Event"::RT0012;
-        TelEvent."Event ID" := TelemetryEvent.EventId();
-        TelEvent.Description := TelemetryEvent.EventDescription();
-        TelEvent.Insert();
+        foreach x in "PTE Telemetry Event".Ordinals() do begin
+            TelemetryEvent := "PTE Telemetry Event".FromInteger(x);
+            //            TelEvent."Event ID" := TelemetryEvent.EventId();
+            //          TelEvent.Description := TelemetryEvent.EventDescription();
+            TelEvent.Insert();
+        end;
     end;
 
     local procedure EncryptKQL(Value: Text): Text

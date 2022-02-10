@@ -8,21 +8,21 @@ enum 69750 "PTE Telemetry Event" implements "PTE Telemetry Event"
 
 interface "PTE Telemetry Event"
 {
-    procedure EventId(): Code[20]
-    procedure EventDescription(): Text[30]
+    procedure EventId(Value: Enum "PTE Telemetry Event"): Code[20]
+    procedure EventDescription(Value: Enum "PTE Telemetry Event"): Text[30]
 }
 
 codeunit 69750 "PTE Telemetry Event" implements "PTE Telemetry Event"
 {
 
-    procedure EventId(): Code[20]
+    procedure EventId(Value: Enum "PTE Telemetry Event"): Code[20]
     begin
-
+        exit(format(Value));
     end;
 
-    procedure EventDescription(): Text[30]
+    procedure EventDescription(Value: Enum "PTE Telemetry Event"): Text[30]
     begin
-
+        exit(format(Value));
     end;
 
 }

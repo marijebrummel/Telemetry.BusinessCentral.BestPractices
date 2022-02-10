@@ -11,11 +11,9 @@ page 69751 "PTE Telemetry Queries"
         {
             repeater(GroupName)
             {
-                field(Code; Rec.Code)
-                {
-                    ApplicationArea = All;
-
-                }
+                field(Code; Rec.Code) { ApplicationArea = All; }
+                field(Description; Rec.Description) { ApplicationArea = All; }
+                field(KQLQuery; Rec."KQL Query") { ApplicationArea = All; MultiLine = true; }
             }
         }
         area(Factboxes)
