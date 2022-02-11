@@ -43,12 +43,12 @@ table 69740 "PTE Telemetry Setup"
     var
         TelemetryEvent: Interface "PTE Telemetry Event";
         TelEvent: Record "PTE Telemetry Event";
-        x: Integer;
+        y: Enum "PTE Telemetry Event";
     begin
-        foreach x in "PTE Telemetry Event".Ordinals() do begin
-            TelemetryEvent := "PTE Telemetry Event".FromInteger(x);
-            //            TelEvent."Event ID" := TelemetryEvent.EventId();
-            //          TelEvent.Description := TelemetryEvent.EventDescription();
+        foreach y in "PTE Telemetry Event".Ordinals() do begin
+            TelemetryEvent := y;
+            TelEvent."Event ID" := TelemetryEvent.EventId(y);
+            TelEvent.Description := TelemetryEvent.EventDescription(y);
             TelEvent.Insert();
         end;
     end;

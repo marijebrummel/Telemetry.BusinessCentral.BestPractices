@@ -9,7 +9,7 @@ table 69750 "PTE Telemetry Event"
         {
             DataClassification = SystemMetadata;
         }
-        field(2; Description; Text[30])
+        field(2; Description; Text[250])
         {
             DataClassification = SystemMetadata;
         }
