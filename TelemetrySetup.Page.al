@@ -42,6 +42,12 @@ page 69740 "PTE Telemetry Setup"
                 Caption = 'Users';
                 RunObject = page "PTE Telemetry Users";
             }
+            action(GetToken)
+            {
+                ApplicationArea = All;
+                Caption = 'Token';
+                RunObject = page 50100;
+            }
         }
         area(Processing)
         {

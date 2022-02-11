@@ -55,6 +55,7 @@ table 69740 "PTE Telemetry Setup"
 
     local procedure EncryptKQL(Value: Text): Text
     var
+        Encrypt: Codeunit "Cryptography Management";
         Base64: Codeunit "Base64 Convert";
         Zip: Codeunit "Data Compression";
         TempBlob: Codeunit "Temp Blob";
@@ -64,7 +65,7 @@ table 69740 "PTE Telemetry Setup"
     begin
         TempBlob.CreateInStream(is);
         TempBlob.CreateOutStream(os);
-        os.WriteText(Value);
+        os.WriteText(Encrypt.Encrypt(Value));
         Clear(os);
         TempBlob.CreateOutStream(os);
         Zip.GZipCompress(is, os);
