@@ -24,7 +24,7 @@ table 69750 "PTE Telemetry Event"
 
     procedure GetQuery(): Text
     begin
-        exit('Traces | ago(1hour) where customDimensions.eventId = ' + "Event ID");
+        exit('Traces');// | ago(1hour) where customDimensions.eventId = ' + "Event ID");
     end;
 
     procedure RunDefaultQuery();

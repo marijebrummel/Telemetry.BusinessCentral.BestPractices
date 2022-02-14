@@ -55,25 +55,21 @@ table 69740 "PTE Telemetry Setup"
 
     local procedure EncryptKQL(Value: Text): Text
     var
-        Encrypt: Codeunit "Cryptography Management";
         Base64: Codeunit "Base64 Convert";
         Zip: Codeunit "Data Compression";
         TempBlob: Codeunit "Temp Blob";
+        TempBlob2: Codeunit "Temp Blob";
         is: InStream;
         os: OutStream;
-        Helper: Text;
     begin
+        TempBlob.CreateOutStream(os);
+        os.WriteText(value);
         TempBlob.CreateInStream(is);
-        TempBlob.CreateOutStream(os);
-        os.WriteText(Encrypt.Encrypt(Value));
-        Clear(os);
-        TempBlob.CreateOutStream(os);
+        TempBlob2.CreateOutStream(os);
         Zip.GZipCompress(is, os);
-        Clear(is);
-        TempBlob.CreateInStream(is);
-        is.ReadText(Value);
-        exit(Base64.ToBase64(Value));
+        TempBlob2.CreateInStream(is);
 
+        exit(Base64.ToBase64(is));
         // static string EncodedKQLQuery(string query)
         // {
         //     var bytes = System.Text.Encoding.UTF8.GetBytes(query);
