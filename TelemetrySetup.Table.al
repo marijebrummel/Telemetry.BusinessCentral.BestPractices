@@ -70,22 +70,5 @@ table 69740 "PTE Telemetry Setup"
         TempBlob2.CreateInStream(is);
 
         exit(Base64.ToBase64(is));
-        // static string EncodedKQLQuery(string query)
-        // {
-        //     var bytes = System.Text.Encoding.UTF8.GetBytes(query);
-        //     using (MemoryStream memoryStream = new MemoryStream())
-        //     {
-        //         using (GZipStream compressedStream = new GZipStream(memoryStream, CompressionMode.Compress, leaveOpen: true))
-        //         {
-        //             compressedStream.Write(bytes, 0, bytes.Length);
-        //         }
-        //         memoryStream.Seek(0, SeekOrigin.Begin);
-        //         Byte[] data = memoryStream.ToArray();
-        //         string encodedQuery = Convert.ToBase64String(data);
-        //         return HttpUtility.UrlEncode(encodedQuery);
-        //     }
-        // }
-
-
     end;
 }

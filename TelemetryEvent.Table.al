@@ -32,7 +32,7 @@ table 69750 "PTE Telemetry Event"
         Setup: Record "PTE Telemetry Setup";
     begin
         Setup.Get();
-        Message(Setup.GetURL(GetQuery()));
+        Hyperlink(Setup.GetURL(GetQuery()));
     end;
 
 
